@@ -68,11 +68,11 @@ int main() {
             double new_seq = calc_distance(A, C) + calc_distance(B, D);
 
             if (new_seq < old_seq) {
-                list.swap(pivot->_next);
+                list.swap(pivot);
                 did_swap = true;
+            } else {
+                pivot = pivot->_next;
             }
-
-            pivot = pivot->_next;
 
         } while (pivot != list.head());
 

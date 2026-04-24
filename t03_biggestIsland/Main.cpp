@@ -2,30 +2,30 @@
 #include <vector>
 #include <stack>
 
+using namespace std;
+
 struct Cell {
     int row;
     int column;
 };
 
-void read_input(std::vector<std::vector<char>> &matrix)
-{
-    std::string line;
+void read_input(vector<vector<char>> &matrix) {
+    string line;
 
-    while (std ::cin >> line)
+    while (cin >> line)
     {
-        std ::vector<char> aux(line.cbegin(), line.cend());
+         vector<char> aux(line.cbegin(), line.cend());
         matrix.push_back(aux);
     }
 }
 
-std::vector<std::vector<bool>> create_visited_matrix(int rows, int columns)
-{
+vector<vector<bool>> create_visited_matrix(int rows, int columns) {
 
-    std::vector<std::vector<bool>> visited_matrix(rows, std::vector<bool>(columns, false));
+    vector<vector<bool>> visited_matrix(rows, vector<bool>(columns, false));
     return visited_matrix;
 }
 
-bool is_valid_neighbor(Cell cell, std::vector<std::vector<char>>& matrix, std::vector<std::vector<bool>>& visited_matrix) {
+bool is_valid_neighbor(Cell cell, vector<vector<char>>& matrix, vector<vector<bool>>& visited_matrix) {
 
     int matrix_rows = matrix.size();
     int matrix_columns = matrix[0].size();
@@ -49,12 +49,12 @@ bool is_valid_neighbor(Cell cell, std::vector<std::vector<char>>& matrix, std::v
 
 int main() {
 
-    std::vector<std::vector<char>> matrix;
+    vector<vector<char>> matrix;
     read_input(matrix);
     int matrix_rows = matrix.size();
     int matrix_columns = matrix[0].size();
-    std::vector<std::vector<bool>> visited_matrix = create_visited_matrix(matrix_rows, matrix_columns);
-    std::stack<Cell> island_stack;
+    vector<vector<bool>> visited_matrix = create_visited_matrix(matrix_rows, matrix_columns);
+    stack<Cell> island_stack;
 
     int biggest_island = 0;
 
@@ -77,7 +77,7 @@ int main() {
                     Cell current_cell = island_stack.top();
                     island_stack.pop();
 
-                    std::stack<Cell> neighbors;
+                    stack<Cell> neighbors;
 
                     neighbors.push({current_cell.row + 1, current_cell.column}); // bottom
                     neighbors.push({current_cell.row - 1, current_cell.column}); // top
@@ -106,5 +106,5 @@ int main() {
         }
     }
 
-    std::cout << biggest_island << std::endl;
+    cout << biggest_island << endl;
 }

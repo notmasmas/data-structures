@@ -1,2 +1,4 @@
 executables/
 t01_knapsackProblem/Main
+t02_travelingSalesman/program
+t03_biggestIsland/Main
